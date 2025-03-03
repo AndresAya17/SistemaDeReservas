@@ -1,11 +1,14 @@
 package com.SistemaDeReservas.Hotel.controllers;
 
+import com.SistemaDeReservas.Hotel.dto.PisoDto;
 import com.SistemaDeReservas.Hotel.exceptions.RecursoNoEncontradoException;
 import com.SistemaDeReservas.Hotel.models.Piso;
 import com.SistemaDeReservas.Hotel.services.PisoService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,19 +25,32 @@ public class PisoController {
     @Autowired
     private PisoService pisoService;
 
+    // @GetMapping("/pisos")
+    // public ResponseEntity<?> findAll(){
+    //     return ResponseEntity.ok(pisoService.findAll());
+    // }
+
     @GetMapping("/pisos")
-    public List<Piso> obtenerPiso(){
-        List<Piso> pisos = this.pisoService.listarPisos();
+    public List<PisoDto> obtenerPiso(){
+        List<PisoDto> pisosDto = this.pisoService.findAll();
         logger.info("Pisos obtenidos");
-        pisos.forEach((piso -> logger.info(piso.toString())));
-        return pisos;
+        pisosDto.forEach((piso -> logger.info(pisosDto.toString())));
+        return pisosDto;
     }
 
     @PostMapping("/pisos")
-    public Piso agregarPiso(@RequestBody Piso piso){
-        logger.info("Piso agregado: " + piso);
-        return this.pisoService.agregarPiso(piso);
+    public ResponseEntity<?> crearPiso(@RequestBody Piso piso){
+        Piso pisoCreado = pisoService.agregarPiso(piso);
+        Map<String, Object> response = new HashMap<>();
+        response.put("mensaje", "Piso creado correctamente");
+        response.put("data", pisoCreado);
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
+    // @PostMapping("/pisos")
+    // public Piso agregarPiso(@RequestBody Piso piso){
+    //     logger.info("Piso agregado: " + piso);
+    //     return this.pisoService.agregarPiso(piso);
+    // }
 
     @GetMapping("/pisos/{id}")
     public ResponseEntity<Piso> obtenerPisoId(
