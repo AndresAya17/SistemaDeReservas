@@ -8,7 +8,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -54,7 +53,7 @@ public class PisoController {
 
     @GetMapping("/pisos/{id}")
     public ResponseEntity<Piso> obtenerPisoId(
-            @PathVariable int id
+            @PathVariable Long id
     ){
         logger.info("Piso encontrado: " + id);
         Piso piso = this.pisoService.buscarPisoPorId(id);
@@ -65,7 +64,7 @@ public class PisoController {
 
     @PutMapping("/pisos/{id}")
     public ResponseEntity<Piso> actualizarPiso(
-            @PathVariable int id,
+            @PathVariable Long id,
             @RequestBody Piso pisoRecibido
     ){
         logger.info("Piso modificiado: " + id);
@@ -81,14 +80,14 @@ public class PisoController {
 
     @DeleteMapping("/pisos/{id}")
     public ResponseEntity<Map<String, Boolean>> eliminarPiso(
-            @PathVariable int id
+            @PathVariable Long id
     ){
         Piso piso = pisoService.buscarPisoPorId(id);
         if (piso == null){
             throw new RecursoNoEncontradoException("No se encontro el piso: " + id);
         }
         logger.info("Piso eliminado: " + id);
-        this.pisoService.eliminarPiso(piso.getIdPiso());
+        this.pisoService.eliminarPiso(piso.getId());
         Map<String, Boolean> respuesta = new HashMap<>();
         respuesta.put("eliminado", Boolean.TRUE);
         return ResponseEntity.ok(respuesta);

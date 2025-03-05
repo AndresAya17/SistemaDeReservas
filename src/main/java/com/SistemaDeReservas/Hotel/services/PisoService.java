@@ -24,8 +24,8 @@ public class PisoService implements IPisoServicio {
     }
 
     @Override
-    public Piso buscarPisoPorId(Integer idPiso) {
-        Piso piso = this.pisoRepository.findById(idPiso).orElse(null);
+    public Piso buscarPisoPorId(Long id) {
+        Piso piso = this.pisoRepository.findById(id).orElse(null);
         return piso;
     }
 
@@ -35,7 +35,7 @@ public class PisoService implements IPisoServicio {
     }
 
     @Override
-    public void eliminarPiso(Integer idPiso) {
-        this.pisoRepository.deleteById(idPiso);
+    public void eliminarPiso(Long id) {
+        this.pisoRepository.deleteById(id);
     }
 }

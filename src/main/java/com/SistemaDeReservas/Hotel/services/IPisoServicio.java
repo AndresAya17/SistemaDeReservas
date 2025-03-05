@@ -9,9 +9,9 @@ public interface IPisoServicio {
 
     public List<PisoDto> findAll();
 
-    public Piso buscarPisoPorId(Integer idPiso);
+    public Piso buscarPisoPorId(Long id);
 
     public Piso agregarPiso(Piso piso);
 
-    public void eliminarPiso(Integer idPiso);
+    public void eliminarPiso(Long id);
 }
