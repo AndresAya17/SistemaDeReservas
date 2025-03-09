@@ -51,5 +51,13 @@ public class HabitacionImpl implements IHabitacionService{
         }
         habitacionRepository.deleteById(id);
     }
+
+    @Override
+    public List<HabitacionDto> findAllByIdPisos(Long idPiso) {
+        List<Habitacion> habitacions = habitacionRepository.findByPisoId(idPiso);
+        return habitacions.stream()
+            .map(this::convertToDto)
+            .collect(Collectors.toList());
+    }
     
 }

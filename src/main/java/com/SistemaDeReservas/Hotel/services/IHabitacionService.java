@@ -13,4 +13,6 @@ public interface IHabitacionService {
     Habitacion findHabitacion(Long id);
 
     void deleteById(Long id);
+
+    List<HabitacionDto> findAllByIdPisos(Long idPiso);
 } 

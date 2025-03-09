@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.SistemaDeReservas.Hotel.dto.HabitacionDto;
 import com.SistemaDeReservas.Hotel.exceptions.UserNotFoundException;
 import com.SistemaDeReservas.Hotel.models.Habitacion;
 import com.SistemaDeReservas.Hotel.services.IHabitacionService;
@@ -25,13 +26,13 @@ import com.SistemaDeReservas.Hotel.services.IHabitacionService;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("reservas-app")
+@RequestMapping("reservas-app/habitacion")
 @RequiredArgsConstructor
 public class HabitacionController {
 
     private final IHabitacionService habitacionService;
     
-    @PostMapping("/habitacion")
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<?> savePiso(@RequestBody Habitacion habitacion, BindingResult bindingResult) {
 
@@ -50,13 +51,12 @@ public class HabitacionController {
         return ResponseEntity.ok(response);
 
     }
-
-    @GetMapping("/habitaciones")
+    @GetMapping
     public ResponseEntity<?> findAll(){
         return ResponseEntity.ok(habitacionService.findAll());
     }
 
-    @GetMapping("/habitaciones/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<?> findById(@PathVariable Long id){
         return ResponseEntity.ok(habitacionService.findHabitacion(id));
     }
@@ -67,8 +67,14 @@ public class HabitacionController {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
     }
 
-    @DeleteMapping("/habitaciones/{id}")
+    @DeleteMapping("{id}")
     public void deleteById(@PathVariable Long id){
         habitacionService.deleteById(id);
+    }
+
+    @GetMapping("/piso/{idPiso}")
+    public ResponseEntity<List<HabitacionDto>> obtenerHabitacionesPorPiso(@PathVariable Long idPiso) {
+        List<HabitacionDto> habitaciones = habitacionService.findAllByIdPisos(idPiso);
+        return ResponseEntity.ok(habitaciones);
     }
 }
