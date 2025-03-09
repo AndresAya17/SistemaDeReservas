@@ -34,7 +34,7 @@ public class HabitacionImpl implements IHabitacionService{
     }
 
     private HabitacionDto convertToDto(Habitacion habitacion) {
-        PisoDto pisoDto = new PisoDto(habitacion.getPiso().getNombre(),habitacion.getPiso().getDescripcion());
+        PisoDto pisoDto = new PisoDto(habitacion.getPiso().getId());
         return new HabitacionDto(habitacion.getNumero(),habitacion.getTipo(),habitacion.getPrecio(),habitacion.getEstado(),pisoDto);
     }
 

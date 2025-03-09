@@ -12,6 +12,5 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PisoDto {
-    private String nombre;
-    private String descripcion;
+    private Long id;
 }

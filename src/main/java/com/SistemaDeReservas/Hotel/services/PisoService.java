@@ -1,14 +1,12 @@
 package com.SistemaDeReservas.Hotel.services;
 
-import com.SistemaDeReservas.Hotel.dto.PisoDto;
 import com.SistemaDeReservas.Hotel.models.Piso;
 import com.SistemaDeReservas.Hotel.repositories.IPisoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
+
 
 @Service
 public class PisoService implements IPisoServicio {
@@ -17,10 +15,11 @@ public class PisoService implements IPisoServicio {
     private IPisoRepository pisoRepository;
 
     @Override
-    public List<PisoDto> findAll() {
-        return StreamSupport.stream(pisoRepository.findAll().spliterator(), false)
-        .map(piso -> new PisoDto(piso.getNombre(), piso.getDescripcion()))
-        .collect(Collectors.toList());
+    public List<Piso> findAll() {
+        return pisoRepository.findAll();
+        // return StreamSupport.stream(pisoRepository.findAll().spliterator(), false)
+        // .map(piso -> new PisoDto(piso.getNombre(), piso.getDescripcion()))
+        // .collect(Collectors.toList());
     }
 
     @Override

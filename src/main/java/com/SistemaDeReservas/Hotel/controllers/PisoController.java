@@ -30,11 +30,12 @@ public class PisoController {
     // }
 
     @GetMapping("/pisos")
-    public List<PisoDto> obtenerPiso(){
-        List<PisoDto> pisosDto = this.pisoService.findAll();
-        logger.info("Pisos obtenidos");
-        pisosDto.forEach((piso -> logger.info(pisosDto.toString())));
-        return pisosDto;
+    public List<Piso> obtenerPiso(){
+        return pisoService.findAll();
+        // List<PisoDto> pisosDto = this.pisoService.findAll();
+        // logger.info("Pisos obtenidos");
+        // pisosDto.forEach((piso -> logger.info(pisosDto.toString())));
+        // return pisosDto;
     }
 
     @PostMapping("/pisos")
