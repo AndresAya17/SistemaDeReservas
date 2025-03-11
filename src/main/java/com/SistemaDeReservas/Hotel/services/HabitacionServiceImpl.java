@@ -1,8 +1,6 @@
 package com.SistemaDeReservas.Hotel.services;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -38,7 +36,7 @@ public class HabitacionServiceImpl implements IHabitacionService{
     }
 
     private HabitacionDto convertToDto(Habitacion habitacion) {
-        PisoDto pisoDto = new PisoDto(habitacion.getPiso().getId());
+        PisoDto pisoDto = new PisoDto(habitacion.getPiso().getNombre(),habitacion.getPiso().getDescripcion());
         return new HabitacionDto(habitacion.getNumero(),habitacion.getTipo(),habitacion.getPrecio(),habitacion.getEstado(),pisoDto);
     }
 
@@ -56,21 +54,6 @@ public class HabitacionServiceImpl implements IHabitacionService{
         habitacionRepository.deleteById(id);
     }
 
-//    @Override
-//    public List<HabitacionDto> findAllByIdPisos(Long idPiso) {
-//        List<Habitacion> habitacions = habitacionRepository.findByPisoId(idPiso);
-//        return habitacions.stream()
-//                .map(this::convertToDto)
-//                .collect(Collectors.toList());
-//    }
-//
-//    @Override
-//    public List<HabitacionDto> findByTipoAndEstado(TipoHabitacion tipo, EstadoHabitacion estado) {
-//        List<Habitacion> habitaciones = habitacionRepository.findByTipoAndEstado(tipo, estado);
-//        return habitaciones.stream()
-//                .map(this::convertToDto)
-//                .collect(Collectors.toList());
-//    }
 
     @Override
     public List<HabitacionDto> filtrarHabitacion(String numero, TipoHabitacion tipo, Double precioMin, Double precioMax, EstadoHabitacion estado){
