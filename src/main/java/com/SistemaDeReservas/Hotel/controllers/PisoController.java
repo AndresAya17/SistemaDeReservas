@@ -1,9 +1,8 @@
 package com.SistemaDeReservas.Hotel.controllers;
 
-import com.SistemaDeReservas.Hotel.dto.PisoDto;
 import com.SistemaDeReservas.Hotel.exceptions.RecursoNoEncontradoException;
 import com.SistemaDeReservas.Hotel.models.Piso;
-import com.SistemaDeReservas.Hotel.services.PisoService;
+import com.SistemaDeReservas.Hotel.services.PisoServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +21,7 @@ public class PisoController {
     private static final Logger logger = LoggerFactory.getLogger(PisoController.class);
 
     @Autowired
-    private PisoService pisoService;
+    private PisoServiceImpl pisoService;
 
     // @GetMapping("/pisos")
     // public ResponseEntity<?> findAll(){

@@ -1,9 +1,13 @@
 package com.SistemaDeReservas.Hotel.services;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
+import com.SistemaDeReservas.Hotel.enums.EstadoHabitacion;
+import com.SistemaDeReservas.Hotel.enums.TipoHabitacion;
 import org.springframework.stereotype.Service;
 
 import com.SistemaDeReservas.Hotel.dto.HabitacionDto;
@@ -17,7 +21,7 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class HabitacionImpl implements IHabitacionService{
+public class HabitacionServiceImpl implements IHabitacionService{
 
     private final IHabitacionRepository habitacionRepository;
 
@@ -50,6 +54,30 @@ public class HabitacionImpl implements IHabitacionService{
             throw new UserNotFoundException(id);
         }
         habitacionRepository.deleteById(id);
+    }
+
+//    @Override
+//    public List<HabitacionDto> findAllByIdPisos(Long idPiso) {
+//        List<Habitacion> habitacions = habitacionRepository.findByPisoId(idPiso);
+//        return habitacions.stream()
+//                .map(this::convertToDto)
+//                .collect(Collectors.toList());
+//    }
+//
+//    @Override
+//    public List<HabitacionDto> findByTipoAndEstado(TipoHabitacion tipo, EstadoHabitacion estado) {
+//        List<Habitacion> habitaciones = habitacionRepository.findByTipoAndEstado(tipo, estado);
+//        return habitaciones.stream()
+//                .map(this::convertToDto)
+//                .collect(Collectors.toList());
+//    }
+
+    @Override
+    public List<HabitacionDto> filtrarHabitacion(String numero, TipoHabitacion tipo, Double precioMin, Double precioMax, EstadoHabitacion estado){
+        List<Habitacion> habitaciones = habitacionRepository.filtrarHabitacion(numero, tipo, precioMin, precioMax, estado);
+        return habitaciones.stream()
+                .map(this::convertToDto)
+                .collect(Collectors.toList());
     }
     
 }

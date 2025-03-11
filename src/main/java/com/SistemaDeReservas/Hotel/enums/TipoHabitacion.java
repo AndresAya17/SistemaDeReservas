@@ -1,4 +1,4 @@
-package com.SistemaDeReservas.Hotel.models;
+package com.SistemaDeReservas.Hotel.enums;
 
 public enum TipoHabitacion {
     SENCILLA,

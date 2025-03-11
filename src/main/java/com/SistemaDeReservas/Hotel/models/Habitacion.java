@@ -1,7 +1,7 @@
 package com.SistemaDeReservas.Hotel.models;
 
-import com.SistemaDeReservas.Hotel.dto.PisoDto;
-
+import com.SistemaDeReservas.Hotel.enums.EstadoHabitacion;
+import com.SistemaDeReservas.Hotel.enums.TipoHabitacion;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;

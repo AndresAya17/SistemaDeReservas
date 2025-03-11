@@ -9,7 +9,7 @@ import java.util.List;
 
 
 @Service
-public class PisoService implements IPisoServicio {
+public class PisoServiceImpl implements IPisoServicio {
 
     @Autowired
     private IPisoRepository pisoRepository;

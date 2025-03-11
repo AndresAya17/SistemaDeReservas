@@ -1,7 +1,7 @@
 package com.SistemaDeReservas.Hotel.dto;
 
-import com.SistemaDeReservas.Hotel.models.EstadoHabitacion;
-import com.SistemaDeReservas.Hotel.models.TipoHabitacion;
+import com.SistemaDeReservas.Hotel.enums.EstadoHabitacion;
+import com.SistemaDeReservas.Hotel.enums.TipoHabitacion;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
