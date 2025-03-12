@@ -6,6 +6,7 @@ import java.util.stream.StreamSupport;
 
 import com.SistemaDeReservas.Hotel.enums.EstadoHabitacion;
 import com.SistemaDeReservas.Hotel.enums.TipoHabitacion;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import com.SistemaDeReservas.Hotel.dto.HabitacionDto;
@@ -15,6 +16,7 @@ import com.SistemaDeReservas.Hotel.models.Habitacion;
 import com.SistemaDeReservas.Hotel.repositories.IHabitacionRepository;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.server.ResponseStatusException;
 
 
 @Service
@@ -25,6 +27,13 @@ public class HabitacionServiceImpl implements IHabitacionService{
 
     @Override
     public void save(Habitacion habitacion) {
+
+        if (habitacionRepository.existsByNumero(habitacion.getNumero())){
+            throw new IllegalArgumentException("Ya existe la habitacion " + habitacion.getNumero());
+        }
+        if (habitacion.getPrecio() <= 0){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "El precio debe de ser mayor a 0");
+        }
         habitacionRepository.save(habitacion);
     }
 
@@ -40,7 +49,6 @@ public class HabitacionServiceImpl implements IHabitacionService{
         return new HabitacionDto(habitacion.getNumero(),habitacion.getTipo(),habitacion.getPrecio(),habitacion.getEstado(),pisoDto);
     }
 
-
     @Override
     public Habitacion findHabitacion(Long id) {
         return habitacionRepository.findById(id).orElseThrow(null);
@@ -53,7 +61,6 @@ public class HabitacionServiceImpl implements IHabitacionService{
         }
         habitacionRepository.deleteById(id);
     }
-
 
     @Override
     public List<HabitacionDto> filtrarHabitacion(String numero, TipoHabitacion tipo, Double precioMin, Double precioMax, EstadoHabitacion estado){

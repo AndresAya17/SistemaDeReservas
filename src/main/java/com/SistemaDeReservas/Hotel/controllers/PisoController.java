@@ -23,11 +23,6 @@ public class PisoController {
     @Autowired
     private PisoServiceImpl pisoService;
 
-    // @GetMapping("/pisos")
-    // public ResponseEntity<?> findAll(){
-    //     return ResponseEntity.ok(pisoService.findAll());
-    // }
-
     @GetMapping("/pisos")
     public List<Piso> obtenerPiso(){
         return pisoService.findAll();
@@ -39,17 +34,16 @@ public class PisoController {
 
     @PostMapping("/pisos")
     public ResponseEntity<?> crearPiso(@RequestBody Piso piso){
-        Piso pisoCreado = pisoService.agregarPiso(piso);
-        Map<String, Object> response = new HashMap<>();
-        response.put("mensaje", "Piso creado correctamente");
-        response.put("data", pisoCreado);
-        return ResponseEntity.status(HttpStatus.CREATED).body(response);
+        try {
+            Piso pisoCreado = pisoService.agregarPiso(piso);
+            Map<String, Object> response = new HashMap<>();
+            response.put("mensaje", "Piso creado correctamente");
+            response.put("data", pisoCreado);
+            return ResponseEntity.status(HttpStatus.CREATED).body(response);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
-    // @PostMapping("/pisos")
-    // public Piso agregarPiso(@RequestBody Piso piso){
-    //     logger.info("Piso agregado: " + piso);
-    //     return this.pisoService.agregarPiso(piso);
-    // }
 
     @GetMapping("/pisos/{id}")
     public ResponseEntity<Piso> obtenerPisoId(

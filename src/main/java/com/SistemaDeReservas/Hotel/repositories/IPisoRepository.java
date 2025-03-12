@@ -4,4 +4,6 @@ import com.SistemaDeReservas.Hotel.models.Piso;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface IPisoRepository  extends JpaRepository<Piso, Long> {
+
+    boolean existsByNombre(String nombre);
 }

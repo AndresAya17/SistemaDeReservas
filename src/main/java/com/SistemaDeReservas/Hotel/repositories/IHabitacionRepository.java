@@ -13,12 +13,7 @@ import java.util.List;
 public interface IHabitacionRepository extends JpaRepository<Habitacion, Long>{
     //Una entidad -> Optional; Muchas -> List
 
-//    @Query("SELECT h FROM Habitacion h WHERE h.piso.id = :idPiso")
-//    List<Habitacion> findByPisoId(@Param("idPiso") Long idPiso);
-//
-//    @Query("SELECT h FROM Habitacion h WHERE h.tipo = :tipo AND h.estado = :estado")
-//    List<Habitacion> findByTipoAndEstado(@Param("tipo") TipoHabitacion tipo, @Param("estado") EstadoHabitacion estado);
-
+    // Consulta para filtar las habitaciones
     @Query("SELECT h FROM Habitacion h WHERE " +
             "(:numero IS NULL OR h.numero LIKE %:numero%) " +
             "AND (:tipo IS NULL OR h.tipo = :tipo) " +
@@ -32,5 +27,7 @@ public interface IHabitacionRepository extends JpaRepository<Habitacion, Long>{
             @Param("precioMax") Double precioMax,
             @Param("estado") EstadoHabitacion estado
     );
+
+    boolean existsByNumero(String numero);
 
 }

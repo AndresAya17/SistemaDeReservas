@@ -12,6 +12,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Min;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -31,14 +34,18 @@ public class Habitacion {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
+    @NotBlank(message = "El numero de habitacion es obligatorio")
     private String numero;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
+    @NotNull(message = "El tipo de habitacion no puede estar vacio")
     private TipoHabitacion tipo;
 
     @Column(nullable = false)
+    @Min(value = 1, message = "El precio debe de ser mayor a 0")
+    @NotNull(message = "El precio es obligatorio")
     private Double precio;
 
     @Enumerated(EnumType.STRING)

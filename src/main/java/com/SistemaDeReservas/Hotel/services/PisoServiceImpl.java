@@ -30,6 +30,9 @@ public class PisoServiceImpl implements IPisoServicio {
 
     @Override
     public Piso agregarPiso(Piso piso) {
+        if (pisoRepository.existsByNombre(piso.getNombre())){
+            throw new IllegalArgumentException("Ya existe el piso " + piso.getNombre());
+        }
         return this.pisoRepository.save(piso);
     }
 
