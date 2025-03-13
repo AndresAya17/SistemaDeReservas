@@ -3,7 +3,6 @@ package com.SistemaDeReservas.Hotel.services;
 import java.util.List;
 
 import com.SistemaDeReservas.Hotel.dto.HabitacionDto;
-import com.SistemaDeReservas.Hotel.dto.PisoDto;
 import com.SistemaDeReservas.Hotel.enums.EstadoHabitacion;
 import com.SistemaDeReservas.Hotel.enums.TipoHabitacion;
 import com.SistemaDeReservas.Hotel.models.Habitacion;
