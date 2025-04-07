@@ -1,10 +1,10 @@
-package com.SistemaDeReservas.Hotel.repositories;
+package com.SistemaDeReservas.Hotel.infraestructure.persistence;
 
-import com.SistemaDeReservas.Hotel.enums.EstadoHabitacion;
-import com.SistemaDeReservas.Hotel.enums.TipoHabitacion;
+import com.SistemaDeReservas.Hotel.domain.enums.EstadoHabitacion;
+import com.SistemaDeReservas.Hotel.domain.enums.TipoHabitacion;
+import com.SistemaDeReservas.Hotel.domain.model.Habitacion;
+
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import com.SistemaDeReservas.Hotel.models.Habitacion;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 

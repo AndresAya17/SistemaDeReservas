@@ -1,11 +1,9 @@
-package com.SistemaDeReservas.Hotel.controllers;
+package com.SistemaDeReservas.Hotel.infraestructure.controller;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.SistemaDeReservas.Hotel.enums.EstadoHabitacion;
-import com.SistemaDeReservas.Hotel.enums.TipoHabitacion;
 import jakarta.validation.Valid;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.HttpStatus;
@@ -13,10 +11,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import com.SistemaDeReservas.Hotel.dto.HabitacionDto;
-import com.SistemaDeReservas.Hotel.exceptions.UserNotFoundException;
-import com.SistemaDeReservas.Hotel.models.Habitacion;
-import com.SistemaDeReservas.Hotel.services.IHabitacionService;
+import com.SistemaDeReservas.Hotel.common.dto.HabitacionDto;
+import com.SistemaDeReservas.Hotel.common.exceptions.UserNotFoundException;
+import com.SistemaDeReservas.Hotel.domain.enums.EstadoHabitacion;
+import com.SistemaDeReservas.Hotel.domain.enums.TipoHabitacion;
+import com.SistemaDeReservas.Hotel.domain.model.Habitacion;
+import com.SistemaDeReservas.Hotel.domain.repository.IHabitacionService;
 
 import lombok.RequiredArgsConstructor;
 

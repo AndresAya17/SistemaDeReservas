@@ -1,4 +1,4 @@
-package com.SistemaDeReservas.Hotel.controllers;
+package com.SistemaDeReservas.Hotel.infraestructure.controller;
 
 import java.util.HashMap;
 import java.util.List;
@@ -18,9 +18,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.SistemaDeReservas.Hotel.exceptions.UserNotFoundException;
-import com.SistemaDeReservas.Hotel.models.Reserva;
-import com.SistemaDeReservas.Hotel.services.IReservaService;
+import com.SistemaDeReservas.Hotel.common.exceptions.UserNotFoundException;
+import com.SistemaDeReservas.Hotel.domain.model.Reserva;
+import com.SistemaDeReservas.Hotel.domain.repository.IReservaService;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

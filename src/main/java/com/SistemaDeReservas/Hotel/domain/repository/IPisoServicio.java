@@ -1,9 +1,9 @@
-package com.SistemaDeReservas.Hotel.services;
+package com.SistemaDeReservas.Hotel.domain.repository;
 
-
-import com.SistemaDeReservas.Hotel.models.Piso;
 
 import java.util.List;
+
+import com.SistemaDeReservas.Hotel.domain.model.Piso;
 
 public interface IPisoServicio {
 

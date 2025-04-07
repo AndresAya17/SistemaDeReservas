@@ -1,19 +1,19 @@
-package com.SistemaDeReservas.Hotel.services;
+package com.SistemaDeReservas.Hotel.infraestructure.persistence;
 
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
-import com.SistemaDeReservas.Hotel.enums.EstadoHabitacion;
-import com.SistemaDeReservas.Hotel.enums.TipoHabitacion;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
-import com.SistemaDeReservas.Hotel.dto.HabitacionDto;
-import com.SistemaDeReservas.Hotel.dto.PisoDto;
-import com.SistemaDeReservas.Hotel.exceptions.UserNotFoundException;
-import com.SistemaDeReservas.Hotel.models.Habitacion;
-import com.SistemaDeReservas.Hotel.repositories.IHabitacionRepository;
+import com.SistemaDeReservas.Hotel.common.dto.HabitacionDto;
+import com.SistemaDeReservas.Hotel.common.dto.PisoDto;
+import com.SistemaDeReservas.Hotel.common.exceptions.UserNotFoundException;
+import com.SistemaDeReservas.Hotel.domain.enums.EstadoHabitacion;
+import com.SistemaDeReservas.Hotel.domain.enums.TipoHabitacion;
+import com.SistemaDeReservas.Hotel.domain.model.Habitacion;
+import com.SistemaDeReservas.Hotel.domain.repository.IHabitacionService;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.server.ResponseStatusException;

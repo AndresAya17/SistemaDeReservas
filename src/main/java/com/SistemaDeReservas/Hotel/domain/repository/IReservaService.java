@@ -1,9 +1,9 @@
-package com.SistemaDeReservas.Hotel.services;
+package com.SistemaDeReservas.Hotel.domain.repository;
 
 import java.util.List;
 
-import com.SistemaDeReservas.Hotel.dto.ReservaDto;
-import com.SistemaDeReservas.Hotel.models.Reserva;
+import com.SistemaDeReservas.Hotel.common.dto.ReservaDto;
+import com.SistemaDeReservas.Hotel.domain.model.Reserva;
 
 public interface IReservaService {
     public List<ReservaDto> findAll();

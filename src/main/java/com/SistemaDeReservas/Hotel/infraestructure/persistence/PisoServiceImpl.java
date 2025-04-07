@@ -1,7 +1,8 @@
-package com.SistemaDeReservas.Hotel.services;
+package com.SistemaDeReservas.Hotel.infraestructure.persistence;
 
-import com.SistemaDeReservas.Hotel.models.Piso;
-import com.SistemaDeReservas.Hotel.repositories.IPisoRepository;
+import com.SistemaDeReservas.Hotel.domain.model.Piso;
+import com.SistemaDeReservas.Hotel.domain.repository.IPisoServicio;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,9 +18,6 @@ public class PisoServiceImpl implements IPisoServicio {
     @Override
     public List<Piso> findAll() {
         return pisoRepository.findAll();
-        // return StreamSupport.stream(pisoRepository.findAll().spliterator(), false)
-        // .map(piso -> new PisoDto(piso.getNombre(), piso.getDescripcion()))
-        // .collect(Collectors.toList());
     }
 
     @Override

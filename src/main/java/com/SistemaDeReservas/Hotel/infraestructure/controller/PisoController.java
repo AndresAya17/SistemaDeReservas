@@ -1,8 +1,9 @@
-package com.SistemaDeReservas.Hotel.controllers;
+package com.SistemaDeReservas.Hotel.infraestructure.controller;
 
-import com.SistemaDeReservas.Hotel.exceptions.RecursoNoEncontradoException;
-import com.SistemaDeReservas.Hotel.models.Piso;
-import com.SistemaDeReservas.Hotel.services.PisoServiceImpl;
+import com.SistemaDeReservas.Hotel.common.exceptions.RecursoNoEncontradoException;
+import com.SistemaDeReservas.Hotel.domain.model.Piso;
+import com.SistemaDeReservas.Hotel.infraestructure.persistence.PisoServiceImpl;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("reservas-app")
+@RequestMapping("reservas-app/pisos")
 public class PisoController {
 
     private static final Logger logger = LoggerFactory.getLogger(PisoController.class);
@@ -23,16 +24,12 @@ public class PisoController {
     @Autowired
     private PisoServiceImpl pisoService;
 
-    @GetMapping("/pisos")
+    @GetMapping()
     public List<Piso> obtenerPiso(){
         return pisoService.findAll();
-        // List<PisoDto> pisosDto = this.pisoService.findAll();
-        // logger.info("Pisos obtenidos");
-        // pisosDto.forEach((piso -> logger.info(pisosDto.toString())));
-        // return pisosDto;
     }
 
-    @PostMapping("/pisos")
+    @PostMapping()
     public ResponseEntity<?> crearPiso(@RequestBody Piso piso){
         try {
             Piso pisoCreado = pisoService.agregarPiso(piso);
@@ -45,7 +42,7 @@ public class PisoController {
         }
     }
 
-    @GetMapping("/pisos/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Piso> obtenerPisoId(
             @PathVariable Long id
     ){
@@ -56,7 +53,7 @@ public class PisoController {
         } else throw new RecursoNoEncontradoException("No se encontro el piso: " + id);
     }
 
-    @PutMapping("/pisos/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Piso> actualizarPiso(
             @PathVariable Long id,
             @RequestBody Piso pisoRecibido
@@ -72,7 +69,7 @@ public class PisoController {
         return ResponseEntity.ok(piso);
     }
 
-    @DeleteMapping("/pisos/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Map<String, Boolean>> eliminarPiso(
             @PathVariable Long id
     ){

@@ -1,4 +1,4 @@
-package com.SistemaDeReservas.Hotel.enums;
+package com.SistemaDeReservas.Hotel.domain.enums;
 
 public enum EstadoReserva {
     PENDIENTE,

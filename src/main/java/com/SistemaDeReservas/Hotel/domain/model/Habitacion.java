@@ -1,7 +1,8 @@
-package com.SistemaDeReservas.Hotel.models;
+package com.SistemaDeReservas.Hotel.domain.model;
 
-import com.SistemaDeReservas.Hotel.enums.EstadoHabitacion;
-import com.SistemaDeReservas.Hotel.enums.TipoHabitacion;
+import com.SistemaDeReservas.Hotel.domain.enums.EstadoHabitacion;
+import com.SistemaDeReservas.Hotel.domain.enums.TipoHabitacion;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;

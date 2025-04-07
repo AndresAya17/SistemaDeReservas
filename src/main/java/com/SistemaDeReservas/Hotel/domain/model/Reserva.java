@@ -1,8 +1,8 @@
-package com.SistemaDeReservas.Hotel.models;
+package com.SistemaDeReservas.Hotel.domain.model;
 
 import java.time.LocalDate;
 
-import com.SistemaDeReservas.Hotel.enums.EstadoReserva;
+import com.SistemaDeReservas.Hotel.domain.enums.EstadoReserva;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
